@@ -25,7 +25,6 @@ class Player:
 
     def betRequest(self, game_state):
         try:
-            return 0
             self.value = game_state["current_buy_in"]
 
             self.get_cards(game_state)
@@ -48,8 +47,7 @@ class Player:
             print self.value
             return self.value
         except IOError:
-            print IOError
-            return game_state["current_buy_in"]
+            return 0
 
     def pair_action(self):
         self.value += 20
