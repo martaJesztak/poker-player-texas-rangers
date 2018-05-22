@@ -30,7 +30,7 @@ class Player:
 
             if game_state["round"] == 0:
                 self.value += 10
-                self.value *= self.matcher.find_match()
+                self.value *= (self.matcher.find_match() + 1)
             elif game_state["round"] == 1:
                 self.value *= self.matcher.find_match()
             elif game_state["round"] == 2:
