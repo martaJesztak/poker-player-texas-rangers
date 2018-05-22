@@ -2,7 +2,7 @@ import matcher as cards_matcher
 
 
 class Player:
-    VERSION = "Texas Ranger 0.5"
+    VERSION = "yo mama so fat it crashed the poker"
 
     def __init__(self):
         self.me, self.card1, self.card2, self.value = None, None, None, None
@@ -18,8 +18,8 @@ class Player:
                 self.me = player
                 self.cards = self.me["hole_cards"]
 
-                self.score += self.cards[0]["rank"]  # TODO do when AKQJ
-                self.score += self.cards[1]["rank"]  # TODO do when AKQJ
+                self.score += self.get_rank_value(self.cards[0])
+                self.score += self.get_rank_value(self.cards[1])
 
         self.matcher = cards_matcher.Matcher(self.cards, self.common_cards)
 
@@ -49,8 +49,19 @@ class Player:
         except:
             return 0
 
-    def pair_action(self):
-        self.value += 20
+    def get_rank_value(self, card):
+        rank = card["rank"]
+        try:
+            return int(rank)
+        except:
+            if rank == "A":
+                return 14
+            if rank == "K":
+                return 13
+            if rank == "Q":
+                return 12
+            if rank == "J":
+                return 11
 
     def all_in_action(self):
         self.value = 10000
