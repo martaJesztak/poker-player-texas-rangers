@@ -19,10 +19,10 @@ class Player:
                 self.all_cards += self.me["hole_cards"]
 
         self.matcher = cards_matcher.Matcher(self.all_cards)
+        self.matcher.print_all()
 
 
     def betRequest(self, game_state):
-        print game_state
         try:
             self.value = game_state["current_buy_in"]
 
