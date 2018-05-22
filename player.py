@@ -16,8 +16,6 @@ class Player:
 
         self.get_cards(game_state)
 
-        self.if_pair()
-
         if game_state["round"] == 0:
             self.value += 20
         elif game_state["round"] == 1:
@@ -29,25 +27,24 @@ class Player:
         else:
             pass
 
-        self.if_all_in(game_state)
+        print self.card1
+        print self.card2
+        if self.card1 == self.card2:
+            self.pair_action()
+
+        if game_state["current_buy_in"] >= self.me["stack"]:
+            self.all_in_action()
 
         print self.value
 
         return self.value
 
-    def if_pair(self):
-        if self.card1 == self.card2:
-            self.pair_action()
-
-    def if_all_in(self, game_state):
-        if game_state["current_buy_in"] >= self.me["stack"] - 200:
-            self.all_in_action()
-
     def pair_action(self):
         self.value += 20
 
     def all_in_action(self):
-        self.value = 0
+
+        self.value = 10000
 
     def showdown(self, game_state):
         pass
