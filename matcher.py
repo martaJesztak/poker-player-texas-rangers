@@ -40,9 +40,9 @@ class Matcher:
 
     def find_match(self):
         if self.if_drill():
-            return 1.2
+            return 3
         if self.if_two_pair():
-            return 1.1
+            return 2
         if self.if_pair():
             return 1
         return 0
