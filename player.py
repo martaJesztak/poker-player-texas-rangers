@@ -17,7 +17,7 @@ class Player:
                 self.card1 = self.me["hole_cards"][0]
                 self.card2 = self.me["hole_cards"][1]
 
-        self.matcher = cards_matcher.Matcher(self.cards, card1, card2)
+        self.matcher = cards_matcher.Matcher(self.cards, self.card1, self.card2)
         self.matcher.print_all()
 
 
