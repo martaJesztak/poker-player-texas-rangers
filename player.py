@@ -46,7 +46,7 @@ class Player:
 
             print self.value
             return self.value
-        except IOError:
+        except:
             return 0
 
     def pair_action(self):
