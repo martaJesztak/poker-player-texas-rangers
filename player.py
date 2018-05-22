@@ -58,7 +58,7 @@ class Player:
                 self.value = 0
 
             print self.value
-            return int(self.value)
+            return self.value
         except:
             return 0
 
