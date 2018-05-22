@@ -39,12 +39,11 @@ class Player:
             elif game_state["round"] == 3:
                 self.value *= self.matcher.find_match()
 
-
             if game_state["current_buy_in"] >= self.me["stack"]:
                 self.value = self.me["stack"]
 
             print self.value
-            return math.floor(self.value)
+            return int(math.floor(self.value))
         except:
             return 0
 
