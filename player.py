@@ -5,9 +5,12 @@ class Player:
 
     def betRequest(self, game_state):
         for player in game_state["players"]:
-            print player
+            if player["name"] == "Texas Rangers":
+                print player
 
-        return 0
+        if game_state["round"] == 0:
+            return 10
+        return 1
 
     def showdown(self, game_state):
         pass
