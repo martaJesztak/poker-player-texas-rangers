@@ -1,5 +1,5 @@
 import matcher as cards_matcher
-
+import math
 
 class Player:
     VERSION = "yo mama so fat it crashed the poker"
@@ -33,19 +33,18 @@ class Player:
                 self.value += 10
                 self.value *= self.matcher.find_match()
             elif game_state["round"] == 1:
-                pass
+                self.value *= self.matcher.find_match()
             elif game_state["round"] == 2:
-                pass
+                self.value *= self.matcher.find_match()
             elif game_state["round"] == 3:
-                pass
-            else:
-                pass
+                self.value *= self.matcher.find_match()
+
 
             if game_state["current_buy_in"] >= self.me["stack"]:
                 self.all_in_action()
 
             print self.value
-            return self.value
+            return math.floor(self.value)
         except:
             return 0
 
