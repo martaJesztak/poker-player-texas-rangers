@@ -6,19 +6,18 @@ class Player:
 
     def __init__(self):
         self.me, self.card1, self.card2, self.value = None, None, None, None
-        self.all_cards = None
+        self.cards = None
         self.matcher = None
 
     def get_cards(self, game_state):
-        self.all_cards = game_state["community_cards"]
+        self.cards = game_state["community_cards"]
         for player in game_state["players"]:
             if player["name"] == "Texas Rangers":  # this is us
                 self.me = player
                 self.card1 = self.me["hole_cards"][0]
                 self.card2 = self.me["hole_cards"][1]
-                self.all_cards += self.me["hole_cards"]
 
-        self.matcher = cards_matcher.Matcher(self.all_cards)
+        self.matcher = cards_matcher.Matcher(self.cards, card1, card2)
         self.matcher.print_all()
 
 
