@@ -32,11 +32,10 @@ class Player:
         for player in game_state["players"]:
             if player["name"] == "Texas Rangers":  # this is us
                 self.me = game_state["players"]
-                self.card1 = me["hole_cards"][0]
-                self.card2 = me["hole_cards"][1]
+                self.card1 = self.me["hole_cards"][0]
+                self.card2 = self.me["hole_cards"][1]
 
     def pair(self, value):
-
         value += 20
         return value
 
