@@ -39,6 +39,7 @@ class Player:
         self.matcher = cards_matcher.Matcher(self.cards, self.common_cards)
 
     def betRequest(self, game_state):
+        return 0
         try:
             self.value = game_state["current_buy_in"]
 
