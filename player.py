@@ -1,7 +1,7 @@
 import matcher as cards_matcher
 
 class Player:
-    VERSION = "VENEZUELAAAAA!!!"
+    VERSION = "ez nem commit, ez a version name"
 
     def __init__(self):
         self.me, self.card1, self.card2, self.value = None, None, None, None
@@ -32,7 +32,7 @@ class Player:
                 self.value += 10
                 self.value *= (self.matcher.find_match() + 1)
             elif game_state["round"] == 1:
-                self.value *= self.matcher.find_match()
+                self.value *= (self.matcher.find_match() + 1)
             elif game_state["round"] == 2:
                 self.value *= self.matcher.find_match()
             elif game_state["round"] == 3:
