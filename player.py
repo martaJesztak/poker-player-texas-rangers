@@ -1,5 +1,20 @@
 import matcher as cards_matcher
-import math
+
+
+def get_rank_value(card):
+    rank = card["rank"]
+    try:
+        return int(rank)
+    except:
+        if rank == "A":
+            return 14
+        if rank == "K":
+            return 13
+        if rank == "Q":
+            return 12
+        if rank == "J":
+            return 11
+
 
 class Player:
     VERSION = "yo mama so fat it crashed the poker"
@@ -18,8 +33,8 @@ class Player:
                 self.me = player
                 self.cards = self.me["hole_cards"]
 
-                self.score += self.get_rank_value(self.cards[0])
-                self.score += self.get_rank_value(self.cards[1])
+                self.score += get_rank_value(self.cards[0])
+                self.score += get_rank_value(self.cards[1])
 
         self.matcher = cards_matcher.Matcher(self.cards, self.common_cards)
 
@@ -40,26 +55,12 @@ class Player:
                 self.value *= self.matcher.find_match()
 
             if game_state["current_buy_in"] >= self.me["stack"]:
-                self.value = self.me["stack"]
+                self.value = 0
 
             print self.value
             return int(self.value)
         except:
             return 0
-
-    def get_rank_value(self, card):
-        rank = card["rank"]
-        try:
-            return int(rank)
-        except:
-            if rank == "A":
-                return 14
-            if rank == "K":
-                return 13
-            if rank == "Q":
-                return 12
-            if rank == "J":
-                return 11
 
     def showdown(self, game_state):
         pass
