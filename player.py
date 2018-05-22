@@ -38,7 +38,7 @@ class Player:
             self.pair_action()
 
     def if_all_in(self, game_state):
-        if game_state["current_buy_in"] > 999:
+        if game_state["current_buy_in"] >= self.me["stack"]:
             self.all_in_action()
 
     def pair_action(self):
