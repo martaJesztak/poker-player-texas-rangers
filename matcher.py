@@ -1,4 +1,4 @@
-from player import get_rank_value
+import player
 
 
 class Matcher:
@@ -43,7 +43,7 @@ class Matcher:
     def if_straight(self):
         for i, card in enumerate(self.all_cards):
             for j, common in enumerate(self.all_cards):
-                if get_rank_value(card) + 1 == get_rank_value(common):
+                if player.get_rank_value(card) + 1 == player.get_rank_value(common):
                     # not actual drill, just two, but it's better than nothing
                     return True
         return False
