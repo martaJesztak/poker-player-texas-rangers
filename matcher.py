@@ -52,9 +52,9 @@ class Matcher:
         if self.if_straight():
             return 5
         if self.if_drill():
-            return 1.2
+            return 3
         if self.if_two_pair():
-            return 1.1
+            return 2
         if self.if_pair():
             return 1
         return 0
