@@ -102,7 +102,7 @@ class Matcher:
             return 1
         if self.if_high_card():
             return 1
-        return 0
+        return 1
 
     def get_rank_value(self, card):
         rank = card["rank"]
