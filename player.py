@@ -6,6 +6,7 @@ class Player:
 
     def __init__(self):
         self.me, self.card1, self.card2, self.value = None, None, None, None
+        self.score = 0
         self.cards = None
         self.matcher = None
 
@@ -17,17 +18,23 @@ class Player:
                 self.card1 = self.me["hole_cards"][0]
                 self.card2 = self.me["hole_cards"][1]
 
+                self.score += self.card1
+                self.score += self.card2
+
         self.matcher = cards_matcher.Matcher(self.cards, self.card1, self.card2)
         self.matcher.print_all()
 
 
     def betRequest(self, game_state):
         try:
+            return 0
             self.value = game_state["current_buy_in"]
 
             self.get_cards(game_state)
 
             if game_state["round"] == 0:
+                if self.matcher.if_pair([self.card1, self.card2]):
+                    self.score *= 1.1
                 self.value += 20
             elif game_state["round"] == 1:
                 pass
@@ -38,18 +45,13 @@ class Player:
             else:
                 pass
 
-            print self.card1
-            print self.card2
-            if self.card1 == self.card2:
-                self.pair_action()
-
             if game_state["current_buy_in"] >= self.me["stack"]:
                 self.all_in_action()
 
             print self.value
-
             return self.value
         except IOError:
+            print IOError
             return game_state["current_buy_in"]
 
     def pair_action(self):

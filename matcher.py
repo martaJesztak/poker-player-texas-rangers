@@ -7,3 +7,10 @@ class Matcher:
 
     def print_all(self):
         print self.cards
+
+    def if_pair(self, cards):
+        for i, card in enumerate(cards):
+            for j, other in enumerate(cards):
+                if card == other:
+                    return True
+        return False
