@@ -1,21 +1,5 @@
 import matcher as cards_matcher
 
-
-def get_rank_value(card):
-    rank = card["rank"]
-    try:
-        return int(rank)
-    except:
-        if rank == "A":
-            return 14
-        if rank == "K":
-            return 13
-        if rank == "Q":
-            return 12
-        if rank == "J":
-            return 11
-
-
 class Player:
     VERSION = "goddamit"
 
@@ -33,13 +17,12 @@ class Player:
                 self.me = player
                 self.cards = self.me["hole_cards"]
 
-                self.score += get_rank_value(self.cards[0])
-                self.score += get_rank_value(self.cards[1])
+                self.score += self.matcher.get_rank_value(self.cards[0])
+                self.score += self.matcher.get_rank_value(self.cards[1])
 
-        self.matcher = cards_matcher.Matcher(self.cards, self.common_cards)
+        self.matcher = cards_matcher.Matcher(self.cards, self.common_cards, self)
 
     def betRequest(self, game_state):
-        return 0
         try:
             self.value = game_state["current_buy_in"]
 
