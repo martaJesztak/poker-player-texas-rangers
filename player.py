@@ -8,22 +8,20 @@ class Player:
         self.me, self.card1, self.card2, self.value = None, None, None, None
         self.score = 0
         self.cards = None
+        self.common_cards = None
         self.matcher = None
 
     def get_cards(self, game_state):
-        self.cards = game_state["community_cards"]
+        self.common_cards = game_state["community_cards"]
         for player in game_state["players"]:
             if player["name"] == "Texas Rangers":  # this is us
                 self.me = player
-                self.card1 = self.me["hole_cards"][0]
-                self.card2 = self.me["hole_cards"][1]
+                self.cards = self.me["hole_cards"]
 
-                self.score += self.card1
-                self.score += self.card2
+                self.score += self.cards[0]["rank"]  # TODO do when AKQJ
+                self.score += self.cards[1]["rank"]  # TODO do when AKQJ
 
-        self.matcher = cards_matcher.Matcher(self.cards, self.card1, self.card2)
-        self.matcher.print_all()
-
+        self.matcher = cards_matcher.Matcher(self.cards, self.common_cards)
 
     def betRequest(self, game_state):
         try:
@@ -33,9 +31,8 @@ class Player:
             self.get_cards(game_state)
 
             if game_state["round"] == 0:
-                if self.matcher.if_pair([self.card1, self.card2]):
-                    self.score *= 1.1
-                self.value += 20
+                self.value += 10
+                self.value *= self.matcher.find_match()
             elif game_state["round"] == 1:
                 pass
             elif game_state["round"] == 2:

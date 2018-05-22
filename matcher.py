@@ -1,16 +1,23 @@
 class Matcher:
 
-    def __init__(self, cards, card1, card2):
+    def __init__(self, cards, common_cards):
         self.cards = cards
-        self.card1 = card1
-        self.card2 = card2
+        self.common_cards = common_cards
+        self.all_cards = cards + common_cards
+        self.print_all()
 
     def print_all(self):
         print self.cards
+        print self.common_cards
 
-    def if_pair(self, cards):
-        for i, card in enumerate(cards):
-            for j, other in enumerate(cards):
-                if card == other:
+    def if_pair(self):
+        for i, card in enumerate(self.cards):
+            for j, common in enumerate(self.common_cards):
+                if card == common:
                     return True
         return False
+
+    def find_match(self):
+        if self.if_pair():
+            return 1
+        return 0
