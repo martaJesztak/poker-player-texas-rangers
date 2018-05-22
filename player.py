@@ -43,7 +43,7 @@ class Player:
                 self.value = self.me["stack"]
 
             print self.value
-            return int(math.floor(self.value))
+            return int(self.value)
         except:
             return 0
 
