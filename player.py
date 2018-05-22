@@ -30,9 +30,9 @@ class Player:
 
             if game_state["round"] == 0:
                 self.value += 10
-                self.value *= (self.matcher.find_match() + 1)
+                self.value *= (self.matcher.find_match() + 0)
             elif game_state["round"] == 1:
-                self.value *= (self.matcher.find_match() + 1)
+                self.value *= (self.matcher.find_match() + 0)
             elif game_state["round"] == 2:
                 self.value *= self.matcher.find_match()
             elif game_state["round"] == 3:
@@ -44,7 +44,7 @@ class Player:
             print self.value
             return self.value
         except:
-            return 0
+            return 1
 
     def showdown(self, game_state):
         pass
