@@ -16,9 +16,9 @@ class Player:
             if player["name"] == "Texas Rangers":  # this is us
                 self.me = player
                 self.cards = self.me["hole_cards"]
-                if self.cards[0]:
+                if self.cards[0] is not None:
                     self.score += self.matcher.get_rank_value(self.cards[0])
-                if self.cards[1]:
+                if self.cards[1] is not None:
                     self.score += self.matcher.get_rank_value(self.cards[1])
 
         self.matcher = cards_matcher.Matcher(self.cards, self.common_cards, self)
