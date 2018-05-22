@@ -36,6 +36,7 @@ class Player:
     def if_pair(self):
         if self.card1 == self.card2:
             self.pair_action()
+            return self.value
 
     def if_all_in(self, game_state):
         if game_state["current_buy_in"] >= self.me["stack"] - 200:
