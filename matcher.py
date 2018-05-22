@@ -38,6 +38,7 @@ class Matcher:
             return True
         return False
 
+
     def if_straight(self):
         for i, card in enumerate(self.all_cards):
             for j, common in enumerate(self.all_cards):
@@ -45,6 +46,10 @@ class Matcher:
                     # not actual drill
                     return True
         return False
+
+    def if_high_card(self):
+        if self.get_rank_value(self.cards[0])+ self.get_rank_value(self.cards[1]) > 20:
+            return 1
 
     def find_match(self):
         if self.if_straight():
@@ -54,6 +59,8 @@ class Matcher:
         if self.if_two_pair():
             return 2
         if self.if_pair():
+            return 1
+        if self.if_high_card():
             return 1
         return 0
 
