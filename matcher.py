@@ -37,7 +37,6 @@ class Matcher:
             return True
         return False
 
-
     def find_match(self):
         if self.if_drill():
             return 1.2

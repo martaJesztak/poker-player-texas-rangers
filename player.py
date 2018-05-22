@@ -41,7 +41,7 @@ class Player:
 
 
             if game_state["current_buy_in"] >= self.me["stack"]:
-                self.all_in_action()
+                self.value = self.me["stack"]
 
             print self.value
             return math.floor(self.value)
@@ -61,9 +61,6 @@ class Player:
                 return 12
             if rank == "J":
                 return 11
-
-    def all_in_action(self):
-        self.value = 10000
 
     def showdown(self, game_state):
         pass
