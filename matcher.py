@@ -40,8 +40,8 @@ class Matcher:
     def if_straight(self):
         for i, card in enumerate(self.all_cards):
             for j, common in enumerate(self.all_cards):
-                if player.get_rank_value(card) + 1 == player.get_rank_value(common):
-                    # not actual drill, just two, but it's better than nothing
+                if card["rank"] + 1 == common["rank"]:
+                    # broken af
                     return True
         return False
 
