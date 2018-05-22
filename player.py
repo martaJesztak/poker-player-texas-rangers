@@ -22,6 +22,7 @@ class Player:
 
 
     def betRequest(self, game_state):
+        print game_state
         try:
             self.value = game_state["current_buy_in"]
 
