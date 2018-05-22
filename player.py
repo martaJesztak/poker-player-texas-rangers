@@ -19,7 +19,7 @@ class Player:
         self.if_pair()
 
         if game_state["round"] == 0:
-            return self.value + 20
+            self.value += 20
         elif game_state["round"] == 1:
             pass
         elif game_state["round"] == 2:
