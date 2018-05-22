@@ -38,7 +38,6 @@ class Matcher:
             return True
         return False
 
-
     def if_straight(self):
         for i, card in enumerate(self.all_cards):
             for j, common in enumerate(self.all_cards):
@@ -51,7 +50,31 @@ class Matcher:
         if self.get_rank_value(self.cards[0])+ self.get_rank_value(self.cards[1]) > 20:
             return 1
 
+    def if_flush(self):
+        same_suit = 0
+        for i, card in enumerate(self.all_cards):
+            for j, common in enumerate(self.all_cards):
+                if card["suit"] == common["suit"]:
+                    same_suit += 1
+                if same_suit > 4:
+                    return True
+        return False
+
+    def if_poker(self):
+        same_rank_found = 0
+        for i, card in enumerate(self.all_cards):
+            for j, common in enumerate(self.all_cards):
+                if card == common:
+                    same_rank_found += 1
+        if same_rank_found >= 4:
+            return True
+        return False
+
     def find_match(self):
+        if self.if_poker():
+            return 10000
+        if self.if_flush():
+            return 6
         if self.if_straight():
             return 5
         if self.if_drill():

@@ -1,7 +1,7 @@
 import matcher as cards_matcher
 
 class Player:
-    VERSION = "goddamit"
+    VERSION = "VENEZUELAAAAA!!!"
 
     def __init__(self):
         self.me, self.card1, self.card2, self.value = None, None, None, None
