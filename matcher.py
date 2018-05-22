@@ -56,7 +56,19 @@ class Matcher:
                     return True
         return False
 
+    def if_poker(self):
+        same_rank_found = 0
+        for i, card in enumerate(self.all_cards):
+            for j, common in enumerate(self.all_cards):
+                if card == common:
+                    same_rank_found += 1
+        if same_rank_found >= 4:
+            return True
+        return False
+
     def find_match(self):
+        if self.if_poker():
+            return 10000
         if self.if_flush():
             return 6
         if self.if_straight():
