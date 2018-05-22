@@ -44,7 +44,7 @@ class Player:
             print self.value
             return self.value
         except:
-            return 1
-
+            print "IABSNBJADAF AWFHBAHIJFUJOAWBFJOANDBAHIJFHAWBDFAHBCFAWS IDFAW FUI AWIFIOWASB FICAH IFWAQ AW"
+            return game_state["current_buy_in"]
     def showdown(self, game_state):
         pass
