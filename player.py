@@ -29,18 +29,23 @@ class Player:
         else:
             pass
 
-        if self.value > 500:
-            return 0
+        self.if_all_in(game_state)
 
         return self.value + 2
 
     def if_pair(self):
         if self.card1 == self.card2:
-            self.value = self.pair_action()
+            self.pair_action()
+
+    def if_all_in(self, game_state):
+        if game_state["current_buy_in"] > 999:
+            self.all_in_action()
 
     def pair_action(self):
         self.value += 20
-        return self.value
+
+    def all_in_action(self):
+        self.value = 0
 
     def showdown(self, game_state):
         pass
