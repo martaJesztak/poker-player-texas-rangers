@@ -1,6 +1,3 @@
-import player
-
-
 class Matcher:
 
     def __init__(self, cards, common_cards):

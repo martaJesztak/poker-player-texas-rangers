@@ -17,7 +17,7 @@ def get_rank_value(card):
 
 
 class Player:
-    VERSION = "yo mama so fat it crashed the poker"
+    VERSION = "goddamit"
 
     def __init__(self):
         self.me, self.card1, self.card2, self.value = None, None, None, None
