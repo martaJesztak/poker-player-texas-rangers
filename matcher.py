@@ -66,9 +66,26 @@ class Matcher:
             return True
         return False
 
+    def if_fullhouse(self):
+        if self.if_pair() & self.if_drill():
+            return True
+
+    def if_royal_flush(self):
+        if self.if_flush():
+            count = 0
+            for card in enumerate(self.all_cards):
+                if str(card["rank"]) in ["A", "K", "Q", "J", "10"]:
+                    count += 1
+            if count > 3:
+                return True
+            else:
+                return False
+
     def find_match(self):
         if self.if_poker():
             return 10000
+        if self.if_fullhouse():
+            return 8
         if self.if_flush():
             return 6
         if self.if_straight():
