@@ -10,8 +10,7 @@ class Player:
     def get_cards(self, game_state):
         for player in game_state["players"]:
             if player["name"] == "Texas Rangers":  # this is us
-                self.me = game_state["players"]
-                print self.me
+                self.me = player
                 self.card1 = self.me["hole_cards"][0]
                 self.card2 = self.me["hole_cards"][1]
 
