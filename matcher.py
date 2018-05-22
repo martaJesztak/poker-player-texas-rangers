@@ -1,3 +1,6 @@
+from player import get_rank_value as get_value
+
+
 class Matcher:
 
     def __init__(self, cards, common_cards):
@@ -37,7 +40,17 @@ class Matcher:
             return True
         return False
 
+    def if_straight(self):
+        for i, card in enumerate(self.all_cards):
+            for j, common in enumerate(self.all_cards):
+                if get_value(card) + 1 == get_value(common):
+                    # not actual drill, just two, but it's better than nothing
+                    return True
+        return False
+
     def find_match(self):
+        if self.if_straight():
+            return 5
         if self.if_drill():
             return 1.2
         if self.if_two_pair():
